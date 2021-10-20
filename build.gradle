@@ -17,6 +17,8 @@ repositories{
 ext{
     //the build number that this plugin is made for
     mindustryVersion = 'v126.2'
+    // .jar file name (the one that is created when building the plugin)
+    jarname = 'PluginTemplate'
 }
 
 dependencies{
@@ -25,12 +27,8 @@ dependencies{
 }
 
 jar{
-    archiveFileName = "${project.archivesBaseName}.jar"
+    archiveFileName = "${jarname}.jar"
     from{
         configurations.runtimeClasspath.collect{it.isDirectory() ? it : zipTree(it)}
-    }
-
-    from(rootDir){
-        include "plugin.json"
     }
 }
